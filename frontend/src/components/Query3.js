@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import React from "react";
 import QueryTable from "./QueryTable";
 import axios from "axios";
-import { CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const Query1 = () => {
+const Query3 = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   function getQuery1Data() {
     axios({
       method: "GET",
-      url: "/user/lowerIncomeAndLuxryCar",
+      url: "/user/lastNameAndGreaterQuoteLength",
     })
       .then((response) => {
         const res = response.data;
@@ -39,7 +39,7 @@ const Query1 = () => {
             <QueryTable
               data={data}
               title={
-                "Users which have income lower than $5 USD and have a car of brand 'BMW' or 'Mercedes'"
+                "Users whose last name starts with “M” and has a quote character length greater than 15 and email includes his/her last name."
               }
             />
           ) : (
@@ -51,4 +51,4 @@ const Query1 = () => {
   );
 };
 
-export default Query1;
+export default Query3;

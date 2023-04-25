@@ -43,7 +43,7 @@ import { Link } from "react-router-dom";
 
 // import { useHistory } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-const drawerWidth = 240;
+const drawerWidth = 340;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -88,8 +88,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const open = Boolean(anchorEl);
   const [openslider, setOpenslider] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -98,34 +96,6 @@ const Header = () => {
 
   const handleDrawerClose = () => {
     setOpenslider(false);
-  };
-
-  // const handleMenu = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
-  // const userLogin = useSelector((state) => state.userLogin);
-  // const { userInfo } = userLogin;
-
-  // const dispatch = useDispatch();
-
-  // let history = useHistory();
-  const navigate = useNavigate();
-
-  // const handleLogout = () => {
-  //   if (userInfo) {
-  //     // history.push("/");
-  //     navigate("/")
-  //     dispatch(logout());
-  //   }
-  // };
-  const handleChange = (event) => {
-    // setAge(event.target.value);
-    console.log("change language");
   };
 
   return (
@@ -215,7 +185,7 @@ const Header = () => {
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary="Query1" />
+              <ListItemText primary="Users with Lower Income and luxury car" />
             </ListItem>
           </List>
         </Link>
@@ -226,7 +196,40 @@ const Header = () => {
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText primary="Query2" />
+              <ListItemText primary="Male Users which have phone price greater than 10,000" />
+            </ListItem>
+          </List>
+        </Link>
+
+        <Link to={"/query3"} style={{ textDecoration: "none", color: "black" }}>
+          <List>
+            <ListItem button key="Query3">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="User Last name starts with “M”, Quote character length greater than 15 and email includes their last name." />
+            </ListItem>
+          </List>
+        </Link>
+
+        <Link to={"/query4"} style={{ textDecoration: "none", color: "black" }}>
+          <List>
+            <ListItem button key="Query4">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="User has luxury car and email contains no digit" />
+            </ListItem>
+          </List>
+        </Link>
+
+        <Link to={"/query5"} style={{ textDecoration: "none", color: "black" }}>
+          <List>
+            <ListItem button key="Query5">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Top 10 cities which have the highest number of users and their average income" />
             </ListItem>
           </List>
         </Link>

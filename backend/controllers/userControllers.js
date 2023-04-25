@@ -12,7 +12,6 @@ LIST OF CONTROLLERS
 
 // 1. Users which have income lower than $5 USD and have a car of brand “BMW” or “Mercedes”.
 const lowerIncomeAndLuxryCar = asyncHandler(async (req, res) => {
-  console.log("Inside abckend");
   const users = await User.find({
     income: { $lt: "$5" },
     car: { $in: ["BMW", "Mercedes"] },

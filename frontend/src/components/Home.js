@@ -24,6 +24,7 @@ const Home = () => {
           width: "50%",
         }}
       ></div>
+      <h1>Welcome to Oru Phones Dashboard</h1>
     </>
   );
 };

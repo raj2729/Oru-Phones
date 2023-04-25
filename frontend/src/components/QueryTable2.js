@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -19,6 +18,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { visuallyHidden } from "@mui/utils";
+import Box from "@mui/material/Box";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -52,52 +52,22 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "firstName",
-    numeric: false,
-    disablePadding: true,
-    label: "User First Name",
-  },
-  {
-    id: "lastName",
-    numeric: false,
-    disablePadding: true,
-    label: "User Last Name",
-  },
-  {
-    id: "email",
-    numeric: false,
-    disablePadding: true,
-    label: "User Email",
-  },
-  {
-    id: "gender",
-    numeric: false,
-    disablePadding: true,
-    label: "User Gender",
-  },
-  {
-    id: "car",
-    numeric: false,
-    disablePadding: true,
-    label: "User Car",
-  },
-  {
     id: "city",
     numeric: false,
     disablePadding: true,
     label: "User City",
   },
   {
-    id: "income",
+    id: "user_count",
     numeric: true,
     disablePadding: false,
-    label: "User Income",
+    label: "User Count in the city",
   },
   {
-    id: "phonePrice",
+    id: "avg_income",
     numeric: true,
     disablePadding: false,
-    label: "User Phone Price",
+    label: "Average income of users in that city",
   },
 ];
 
@@ -117,21 +87,10 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              'aria-label': 'select all desserts',
-            }}
-          /> 
-        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "center"}
+            align={headCell.numeric ? "center" : "center"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -199,16 +158,6 @@ function EnhancedTableToolbar(props) {
           <strong>{props.title}</strong>
         </Typography>
       )}
-
-      {/* {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <div></div>
-      )} */}
     </Toolbar>
   );
 }
@@ -321,15 +270,6 @@ export default function QueryTable(props) {
                       key={row.name}
                       selected={isItemSelected}
                     >
-                      {/* <TableCell padding="checkbox">
-                        <Checkbox
-                          color="primary"
-                          checked={isItemSelected}
-                          inputProps={{
-                            'aria-labelledby': labelId,
-                          }}
-                        />
-                      </TableCell> */}
                       <TableCell
                         component="th"
                         id={labelId}
@@ -337,15 +277,12 @@ export default function QueryTable(props) {
                         padding="none"
                         align="center"
                       >
-                        {row.first_name}
+                        {row._id}
                       </TableCell>
-                      <TableCell align="left">{row.last_name}</TableCell>
-                      <TableCell align="center">{row.email}</TableCell>
-                      <TableCell align="left">{row.gender}</TableCell>
-                      <TableCell align="left">{row.car}</TableCell>
-                      <TableCell align="left">{row.city}</TableCell>
-                      <TableCell align="right">{row.income}</TableCell>
-                      <TableCell align="right">{row.phone_price}</TableCell>
+                      <TableCell align="center">{row.user_count}</TableCell>
+                      <TableCell align="center">
+                        {row.avg_income.toFixed(2)}
+                      </TableCell>
                     </TableRow>
                   );
                 })}

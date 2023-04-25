@@ -4,13 +4,13 @@ import QueryTable from "./QueryTable";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 
-const Query1 = () => {
+const Query2 = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   function getQuery1Data() {
     axios({
       method: "GET",
-      url: "/user/lowerIncomeAndLuxryCar",
+      url: "/user/maleUsersAndHigherPhonePrice",
     })
       .then((response) => {
         const res = response.data;
@@ -38,9 +38,7 @@ const Query1 = () => {
           {data.length > 0 ? (
             <QueryTable
               data={data}
-              title={
-                "Users which have income lower than $5 USD and have a car of brand 'BMW' or 'Mercedes'"
-              }
+              title={"Male Users which have phone price greater than 10,000"}
             />
           ) : (
             <CircularProgress />
@@ -51,4 +49,4 @@ const Query1 = () => {
   );
 };
 
-export default Query1;
+export default Query2;

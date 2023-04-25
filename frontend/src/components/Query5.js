@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import QueryTable from "./QueryTable";
+import QueryTable2 from "./QueryTable2";
 import axios from "axios";
-import { CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
-const Query1 = () => {
+const Query5 = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   function getQuery1Data() {
     axios({
       method: "GET",
-      url: "/user/lowerIncomeAndLuxryCar",
+      url: "/user/topTenCities",
     })
       .then((response) => {
         const res = response.data;
@@ -36,14 +36,15 @@ const Query1 = () => {
       <div>
         <div style={{ margin: "10% 12% 10% 12%" }}>
           {data.length > 0 ? (
-            <QueryTable
+            <QueryTable2
               data={data}
               title={
-                "Users which have income lower than $5 USD and have a car of brand 'BMW' or 'Mercedes'"
+                "Top 10 cities which have the highest number of users and their average income"
               }
             />
           ) : (
             <CircularProgress />
+            // <QueryTable2 data={[]} title={""} />
           )}
         </div>
       </div>
@@ -51,4 +52,4 @@ const Query1 = () => {
   );
 };
 
-export default Query1;
+export default Query5;
