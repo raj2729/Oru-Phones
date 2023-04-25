@@ -85,3 +85,8 @@ All root endpoints have their separate router in `./routes` folder
 |/user/luxuryCarAndNoDigitInEmail                | Displays List Of Users which have a car of brand “BMW”, “Mercedes” or “Audi” and whose email does not include any digit.                                                        |GET                   |
 |/user/topTenCities                | Show the data of top 10 cities which have the highest number of users and their average income.                                                        |GET                   |
 
+## Demonstration
+
+https://user-images.githubusercontent.com/68227858/234369733-51a8faa0-9a30-4832-b51f-fa3c1bda99c9.mp4
+
+
